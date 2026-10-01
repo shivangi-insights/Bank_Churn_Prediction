@@ -188,7 +188,7 @@ This project demonstrates practical skills in:
 ### 1. Clone the Repository
 
 ```bash
-git clone <your-github-repository-url>
+git clone <https://github.com/shivangi-insights/Bank_Churn_Prediction.git>
 ```
 
 ### 2. Navigate to the Project Directory
