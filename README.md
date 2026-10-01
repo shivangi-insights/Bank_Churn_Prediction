@@ -6,7 +6,7 @@ Customer churn is an important business challenge for retail banks because losin
 
 This project develops a machine learning system to predict whether a bank customer is likely to churn based on demographic, account, and engagement-related characteristics.
 
-The project uses classification algorithms and evaluates their ability to identify customers at higher risk of leaving the bank.
+The project applies classification techniques, evaluates model performance using multiple metrics, and translates machine learning outputs into business insights that can support customer retention strategies.
 
 ## Business Objective
 
@@ -16,8 +16,8 @@ The model can support:
 
 * Early identification of potentially at-risk customers
 * Targeted customer retention campaigns
-* Personalized customer engagement
 * Prioritization of retention efforts
+* Personalized customer engagement
 * Data-driven customer relationship management
 
 ## Dataset
@@ -60,7 +60,7 @@ The project follows a standard machine learning workflow:
 
 ## Machine Learning Model
 
-The final model used for prediction is a **Decision Tree Classifier**.
+The project uses a **Decision Tree Classifier** for customer churn prediction.
 
 The model was evaluated using:
 
@@ -72,7 +72,9 @@ The model was evaluated using:
 * Confusion Matrix
 * ROC Curve
 
-## Final Model Performance
+The trained model and preprocessing pipeline are saved using Joblib for reuse.
+
+## Model Performance
 
 | Metric            | Result |
 | ----------------- | -----: |
@@ -84,9 +86,11 @@ The model was evaluated using:
 | Recall            |   0.44 |
 | F1-Score          |   0.56 |
 
-The testing ROC-AUC of **0.8402** indicates that the model has good ability to distinguish between customers who churn and customers who remain.
+The testing ROC-AUC of **0.8402** indicates that the model demonstrates good ability to distinguish between customers who churn and customers who remain.
 
-The difference between training and testing performance is relatively limited, suggesting that the model generalizes reasonably well to unseen test data.
+The relatively small difference between training and testing performance indicates reasonably consistent performance on unseen test data.
+
+Because churn is a business problem where identifying actual churners is important, metrics such as recall and F1-score should also be considered alongside accuracy and ROC-AUC.
 
 ## Feature Importance
 
@@ -100,11 +104,25 @@ The Decision Tree identified the following features as the most influential in i
 | Balance            |     10.68% |
 | Germany            |      5.49% |
 
-These values represent the features the trained Decision Tree relied on most when making predictions. They should not be interpreted as proof of causal relationships.
+These values represent the features the trained Decision Tree relied on most when making predictions.
+
+Feature importance indicates predictive contribution within this trained model and should not be interpreted as proof of causal relationships.
+
+## Key Business Insights
+
+The model's feature-importance analysis highlights several customer characteristics that were particularly influential in the model's churn predictions.
+
+* **Age** was the most influential feature in the trained Decision Tree.
+* **Number of Products** was another major contributor to model predictions.
+* **Active Membership status** also had a meaningful contribution.
+* **Account Balance** contributed to the model's predictions.
+* **Geography**, particularly the Germany category, was also identified as an influential feature.
+
+These findings can help guide further customer segmentation and retention analysis. They should be validated with additional business and customer-level analysis before being used to design retention strategies.
 
 ## Customer-Level Prediction
 
-The project also includes a customer-level prediction function that accepts individual customer information and returns:
+The project includes a customer-level prediction function that accepts individual customer information and returns:
 
 * Predicted churn status
 * Churn probability
@@ -115,22 +133,25 @@ The project also includes a customer-level prediction function that accepts indi
 ```text
 CUSTOMER CHURN PREDICTION
 -----------------------------------
-Prediction        : Likely to Stay
-Churn Probability : 9.00%
-Risk Level        : Low
+Prediction        : Likely to Churn
+Churn Probability : 67.21%
+Risk Level        : High
 ```
+
+This demonstrates how the trained model can be used to generate an individual customer-level prediction.
 
 ## Business Application
 
 A bank could use this type of system as a decision-support tool to identify customers who may require additional attention.
 
-Potential actions could include:
+Potential applications include:
 
 * Personalized retention offers
 * Relationship-manager outreach
 * Customer engagement campaigns
 * Product recommendations
 * Service-quality interventions
+* Customer segmentation and prioritization
 
 The model should support business decision-making rather than serve as the sole basis for customer decisions.
 
@@ -152,16 +173,16 @@ The model should support business decision-making rather than serve as the sole 
 Bank_Churn_Prediction/
 │
 ├── data/
-│
-├── notebooks/
-│   └── bank_churn_prediction.ipynb
-│
-├── src/
+│   └── European_Bank.csv
 │
 ├── models/
+│   └── bank_churn_model.pkl
 │
+├── notebooks/
+│   └── churn_analysis.ipynb
+│
+├── .gitignore
 ├── README.md
-│
 └── requirements.txt
 ```
 
@@ -188,7 +209,7 @@ This project demonstrates practical skills in:
 ### 1. Clone the Repository
 
 ```bash
-git clone <https://github.com/shivangi-insights/Bank_Churn_Prediction.git>
+git clone https://github.com/shivangi-insights/Bank_Churn_Prediction.git
 ```
 
 ### 2. Navigate to the Project Directory
@@ -218,12 +239,20 @@ pip install -r requirements.txt
 jupyter notebook
 ```
 
-Open the notebook located in the `notebooks/` folder and run the cells sequentially.
+Open:
+
+```text
+notebooks/churn_analysis.ipynb
+```
+
+and run the cells sequentially.
 
 ## Conclusion
 
-The project demonstrates how machine learning can be applied to customer churn prediction in the banking sector.
+This project demonstrates how machine learning can be applied to customer churn prediction in the banking sector.
 
-The final Decision Tree model achieved **86.05% testing accuracy** and a **0.8402 testing ROC-AUC**, providing a useful foundation for identifying customers who may be at higher risk of churn and supporting proactive retention strategies.
+The Decision Tree model achieved **86.05% testing accuracy** and a **0.8402 testing ROC-AUC**, providing a useful foundation for identifying customers who may be at higher risk of churn.
 
-The project also demonstrates how machine learning outputs can be translated into business insights for customer retention and relationship management.
+Beyond model development, the project demonstrates how predictive analytics can be translated into business insights that may support customer retention, segmentation, and relationship-management activities.
+
+The model is intended as a decision-support tool and should be combined with appropriate business validation and customer-level analysis before deployment.
