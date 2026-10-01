@@ -86,6 +86,8 @@ The model was evaluated using:
 
 The testing ROC-AUC of **0.8402** indicates that the model has good ability to distinguish between customers who churn and customers who remain.
 
+The difference between training and testing performance is relatively limited, suggesting that the model generalizes reasonably well to unseen test data.
+
 ## Feature Importance
 
 The Decision Tree identified the following features as the most influential in its predictions:
@@ -100,7 +102,7 @@ The Decision Tree identified the following features as the most influential in i
 
 These values represent the features the trained Decision Tree relied on most when making predictions. They should not be interpreted as proof of causal relationships.
 
-## Customer Prediction
+## Customer-Level Prediction
 
 The project also includes a customer-level prediction function that accepts individual customer information and returns:
 
@@ -108,7 +110,7 @@ The project also includes a customer-level prediction function that accepts indi
 * Churn probability
 * Risk level
 
-Example output:
+### Example Output
 
 ```text
 CUSTOMER CHURN PREDICTION
@@ -150,12 +152,16 @@ The model should support business decision-making rather than serve as the sole 
 Bank_Churn_Prediction/
 │
 ├── data/
+│
 ├── notebooks/
 │   └── bank_churn_prediction.ipynb
 │
 ├── src/
+│
 ├── models/
+│
 ├── README.md
+│
 └── requirements.txt
 ```
 
@@ -169,6 +175,7 @@ This project demonstrates practical skills in:
 * Classification modeling
 * Model evaluation
 * ROC-AUC analysis
+* Confusion matrix analysis
 * Feature importance interpretation
 * Customer churn prediction
 * Business interpretation of machine learning results
@@ -176,8 +183,47 @@ This project demonstrates practical skills in:
 * Scikit-learn
 * Git/GitHub
 
+## How to Run the Project
+
+### 1. Clone the Repository
+
+```bash
+git clone <your-github-repository-url>
+```
+
+### 2. Navigate to the Project Directory
+
+```bash
+cd Bank_Churn_Prediction
+```
+
+### 3. Create and Activate a Virtual Environment
+
+On Windows:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+### 4. Install the Required Libraries
+
+```bash
+pip install -r requirements.txt
+```
+
+### 5. Run the Jupyter Notebook
+
+```bash
+jupyter notebook
+```
+
+Open the notebook located in the `notebooks/` folder and run the cells sequentially.
+
 ## Conclusion
 
 The project demonstrates how machine learning can be applied to customer churn prediction in the banking sector.
 
 The final Decision Tree model achieved **86.05% testing accuracy** and a **0.8402 testing ROC-AUC**, providing a useful foundation for identifying customers who may be at higher risk of churn and supporting proactive retention strategies.
+
+The project also demonstrates how machine learning outputs can be translated into business insights for customer retention and relationship management.
